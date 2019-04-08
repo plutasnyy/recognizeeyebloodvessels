@@ -7,6 +7,7 @@ import numpy as np
 from skimage import data, img_as_float, measure
 from skimage import exposure
 from tensor import Tensor
+# norm_image = cv2.normalize(img, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
 
 tensors_list = list()
 images_path = sorted(glob.glob("images/*"))
