@@ -6,8 +6,8 @@ class Tensor:
         assert base_image.size == vessels.size, "Images have different sizes"
         assert mask.size == vessels.size, "Mask has wrong size"
         self.base_image = asarray(base_image)
-        self.vessels = asarray(vessels)
-        self.mask = asarray(mask)/255
+        self.vessels = (asarray(vessels)/255).astype(int)
+        self.mask = (asarray(mask)/255).astype(int)
 
     def __repr__(self):
         return 'base_image: {}, vessels: {}, size: {}' \
