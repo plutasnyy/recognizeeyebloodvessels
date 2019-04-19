@@ -1,3 +1,5 @@
+import logging
+
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,8 +10,9 @@ from tensor import Tensor
 
 
 def draw_images(images: list):
+    logging.info('Draw {} images'.format(len(images)))
     size = np.ceil(np.sqrt(len(images)))
-    fig = plt.figure(figsize=(8, 8))
+    fig = plt.figure(figsize=(32, 32))
     for i, img in enumerate(images):
         fig.add_subplot(size, size, i + 1)
         plt.imshow(img)
@@ -22,6 +25,7 @@ def draw_grey_image(image):
 
 
 def preprocess_image(tensor: Tensor):
+    logging.info('Started preprocess a tensor: {}'.format(tensor))
     bw_image = cv2.cvtColor(tensor.base_image, cv2.COLOR_RGB2GRAY)
     image_adapt = exposure.equalize_adapthist(bw_image)
     edge_sobel = sobel(image_adapt)
