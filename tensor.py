@@ -1,7 +1,6 @@
 from numpy import asarray
 
 
-
 class Tensor:
     def __init__(self, base_image, vessels, mask, id):
         assert base_image.size == vessels.size, "Images have different sizes"

@@ -1,7 +1,9 @@
 import logging
-from random import shuffle
+import random
 
 import numpy as np
+import sklearn
+
 from tensor import Tensor
 
 size = 48
@@ -30,7 +32,7 @@ def random_undersampling(X, y):
     quantity_of_minority = sum(y)
     quantity_of_majority = length - quantity_of_minority
     indexes_list = list(range(length))
-    shuffle(indexes_list)
+    random.shuffle(indexes_list)
     skipped, to_skip = 0, quantity_of_majority - quantity_of_minority
     assert to_skip >= 0
     for index in indexes_list:
@@ -39,4 +41,6 @@ def random_undersampling(X, y):
         else:
             new_X.append(X[index])
             new_y.append(y[index])
-    return new_X, new_y
+
+    result_X, result_Y = sklearn.utils.shuffle(new_X, new_y, random_state=0)
+    return result_X, result_Y

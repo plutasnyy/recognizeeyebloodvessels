@@ -1,5 +1,6 @@
 import logging
 
+from image_processor import draw_images
 from sampling import create_samples_from_tensor, random_undersampling
 from utils import create_tensor_from_file
 from collections import Counter
@@ -17,3 +18,5 @@ for tensor in tensors_list:
     logging.debug('Resampled dataset shape {}'.format(Counter(y)))
     logging.debug('List sizes X: {}, y: {}'.format(len(X), len(y)))
     logging.debug('Shape X[0]: {}, y[0]: {}'.format(X[0].shape, y[0].shape))
+    print(y[:16])
+    draw_images(X[:16])
