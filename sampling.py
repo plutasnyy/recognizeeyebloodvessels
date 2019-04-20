@@ -6,11 +6,12 @@ import sklearn
 
 from tensor import Tensor
 
-size = 48
+size = 32
 half_size = int(size / 2)
 
 
 def create_samples_from_tensor(tensor: Tensor):
+    #TODO instead of creating patches from all pixel, create patches only from minority class and random patches from majority class with quantity equal to minoriy class
     logging.info('Create samples from tensor: {}'.format(tensor))
     X, Y = list(), list()
     for (x, y), value in np.ndenumerate(tensor.mask):
