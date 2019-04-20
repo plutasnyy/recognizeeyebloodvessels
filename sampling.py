@@ -6,7 +6,7 @@ import sklearn
 
 from tensor import Tensor
 
-size = 48
+size = 32
 half_size = int(size / 2)
 
 
