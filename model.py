@@ -10,6 +10,7 @@ class Model:
         self.model = self._build_model()
 
     def load_weights(self, filename):
+        logging.info('Load weights: {}'.format(filename))
         self.model.load_weights(filename)
 
     def fit(self, X, y):
