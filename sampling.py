@@ -5,9 +5,7 @@ import numpy as np
 import sklearn
 
 from tensor import Tensor
-
-size = 32
-half_size = int(size / 2)
+from utils import PATCH_SIZE, HALF_OF_PATCH_SIZE
 
 
 def create_samples_from_tensor(tensor: Tensor):
@@ -15,10 +13,10 @@ def create_samples_from_tensor(tensor: Tensor):
     logging.info('Create samples from tensor: {}'.format(tensor))
     X, Y = list(), list()
     for (x, y), value in np.ndenumerate(tensor.mask):
-        if x + size <= tensor.corrected.shape[0] and y + size <= tensor.corrected.shape[1]:
-            center_x, center_y = x + half_size, y + half_size
+        if x + PATCH_SIZE <= tensor.corrected.shape[0] and y + PATCH_SIZE <= tensor.corrected.shape[1]:
+            center_x, center_y = x + HALF_OF_PATCH_SIZE, y + HALF_OF_PATCH_SIZE
             if tensor.mask[center_x][center_y] == 1:
-                X.append(tensor.corrected[x: x + size, y: y + size])
+                X.append(tensor.corrected[x: x + PATCH_SIZE, y: y + PATCH_SIZE])
                 Y.append(tensor.vessels[center_x][center_y])
     return X, Y
 
