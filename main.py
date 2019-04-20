@@ -24,15 +24,17 @@ model.compile()
 for tensor in tensors_list[0:2]:
     X, y = create_samples_from_tensor(tensor)
     logging.info('Patches were created')
-    X, y = random_undersampling(X, y)
     logging.info('Original dataset shape {}'.format(Counter(y)))
+    X, y = random_undersampling(X, y)
+
+    logging.debug('Resampled dataset shape {}'.format(Counter(y)))
     from_ind = int(len(X) * from_ind)
     to_ind = int(len(X) * to_ind)
     X, y = X[from_ind:to_ind], y[from_ind:to_ind]
+    logging.debug('Cut dataset shape {}'.format(Counter(y)))
 
     model.predict(X[0])
     print(y[0])
-    logging.debug('Resampled dataset shape {}'.format(Counter(y)))
 
     X = np.array(X).reshape(len(X), PATCH_SIZE, PATCH_SIZE, 1)
     y = to_categorical(y)
