@@ -16,7 +16,7 @@ class Model:
         filepath = "weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
         callbacks_list = [checkpoint]
-        self.model.fit(X, y, validation_split=0.1, epochs=15, batch_size=10, callbacks=callbacks_list, verbose=1)
+        self.model.fit(X, y, validation_split=0.1, epochs=500, batch_size=10, callbacks=callbacks_list, verbose=1)
 
     def compile(self):
         self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])

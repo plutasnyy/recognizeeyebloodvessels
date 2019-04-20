@@ -10,11 +10,17 @@ from collections import Counter
 import numpy as np
 
 logging.basicConfig(level=logging.DEBUG)
+#TODO change a flow, read tensor -> learn nn, instead read all tensors -> get ot ouf memory
 tensors_list = create_tensor_from_file(one_tensor=True)
 from_ind = 0.4 # TODO It should not be a guessed percentage value, instead that we should calculate te number and split the learnin set
 to_ind = 0.6
 
-for tensor in tensors_list:
+model = Model()
+model.load_weights('weights-improvement-04-0.51.hdf5')
+model.compile()
+
+print(len(tensors_list))
+for tensor in tensors_list[0:2]:
     X, y = create_samples_from_tensor(tensor)
     logging.info('Patches were created')
     X, y = random_undersampling(X, y)
@@ -27,7 +33,4 @@ for tensor in tensors_list:
     X = np.array(X).reshape(len(X), 32, 32, 1)
     y = to_categorical(y)
     logging.debug('Shape X: {}, y: {}'.format(X.shape, y.shape))
-
-    model = Model()
-    model.compile()
     model.fit(X, y)
