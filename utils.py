@@ -12,7 +12,7 @@ HALF_OF_PATCH_SIZE = int(PATCH_SIZE / 2)
 def create_tensor_from_file(one_tensor=False):
     logging.info('Create tensor list, only one tensor is {}'.format(one_tensor))
     tensors_list = list()
-    images_path = sorted(glob.glob("images/*"))
+    images_path = sorted(glob.glob("learn/*"))
     for i in range(0, len(images_path), 2):
         # TODO FIX for i=164
         base_image = Image.open(images_path[i])
