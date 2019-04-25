@@ -15,13 +15,14 @@ logging.basicConfig(level=logging.INFO)
 
 from_ind = 0.4  # TODO It should not be a guessed percentage value, instead that we should calculate te number and split the learnin set
 to_ind = 0.6
-
-model = Model()
-model.load_weights('weights/weights-improvement-49-0.90.hdf5')
-model.compile()
+#
+# model = Model()
+# model.load_weights('weights/weights-improvement-49-0.90.hdf5')
+# model.compile()
 
 for tensor in create_tensor_from_file(one_tensor=False):
-    tensor.draw_tensor()
+    pass
+    # tensor.draw_tensor()
     # X, y = create_samples_from_tensor(tensor)
     # logging.info('Patches were created')
     # logging.info('Original dataset shape {}'.format(Counter(y)))
