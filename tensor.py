@@ -7,11 +7,12 @@ class Tensor:
         assert mask.size == vessels.size, 'Mask has wrong size'
         self.base_image = asarray(base_image)  # 0-255
         from image_processor import correct_image
-        self.corrected = correct_image(
-            self.base_image)  # 0-1 TODO VERY BAD DEPENDENCY it should be moved out from this class
+        self.corrected = correct_image(self.base_image)  # 0-1 TODO VERY BAD DEPENDENCY it should be moved out from this class
         self.vessels = (asarray(vessels) / 255).astype(int)  # 0-1
+
         if len(self.vessels.shape) == 3:
             self.vessels = self.vessels[:, :, 1]
+
         self.mask = (asarray(mask) / 255).astype(int)  # 0-1
         self.id = id
 
