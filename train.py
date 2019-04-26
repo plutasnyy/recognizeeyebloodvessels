@@ -38,3 +38,4 @@ for tensor in create_tensor_from_file():
         logging.debug('Shape X: {}, y: {}'.format(X_subset.shape, y_subset.shape))
 
         model.fit(X_subset, y_subset)
+        break
