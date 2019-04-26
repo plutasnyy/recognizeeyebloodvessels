@@ -9,7 +9,6 @@ from utils import PATCH_SIZE, HALF_OF_PATCH_SIZE
 
 
 def create_samples_from_tensor(tensor: Tensor):
-    #TODO instead of creating patches from all pixel, create patches only from minority class and random patches from majority class with quantity equal to minoriy class
     logging.info('Create samples from tensor: {}'.format(tensor))
     X, Y = list(), list()
     for (x, y), value in np.ndenumerate(tensor.mask):

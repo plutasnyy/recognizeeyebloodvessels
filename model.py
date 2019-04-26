@@ -1,5 +1,6 @@
 import logging
 
+import keras
 from keras import Sequential
 from keras.callbacks import ModelCheckpoint
 from keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
@@ -18,13 +19,14 @@ class Model:
         self.model.load_weights(filename)
 
     def fit(self, X, y):
-        filepath = "weights/weights-{epoch:02d}-{val_acc:.4f}.hdf5"
+        filepath = 'weights/weights-{epoch:02d}-{val_acc:.2f}.hdf5'
         checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
         callbacks_list = [checkpoint]
-        self.model.fit(X, y, validation_split=0.1, epochs=500, batch_size=10, callbacks=callbacks_list, verbose=1)
+        self.model.fit(X, y, validation_split=0.1, epochs=5, batch_size=32, callbacks=callbacks_list, verbose=1)
 
     def compile(self):
-        self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+        adam = keras.optimizers.Adam(lr=1e-5, epsilon=None, decay=0.0, amsgrad=False)
+        self.model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
         logging.info('Compiled keras model')
 
     def evaluate(self, X, y):
