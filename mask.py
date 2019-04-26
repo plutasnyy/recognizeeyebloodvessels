@@ -5,9 +5,8 @@ import cv2
 import numpy as np
 from PIL import Image
 
-images_path = sorted(glob.glob("test/*"))
+images_path = sorted(glob.glob('test/*'))
 for i in range(0, len(images_path), 2):
-    print(i)
     path = images_path[i]
     path_without_extension = os.path.splitext(os.path.basename(path))[0]
     image = np.asarray(Image.open(path))

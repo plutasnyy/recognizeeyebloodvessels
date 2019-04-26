@@ -17,9 +17,8 @@ model.compile()
 patches_list = view_as_windows(img_with_border, (PATCH_SIZE, PATCH_SIZE))
 predicted_img = np.zeros_like(img_with_border)
 
-print(patches_list.shape)
 for i in range(patches_list.shape[0]):
-    print('i: {}'.format(i))
+    logging.info('i: {}'.format(i))
     for j in range(patches_list.shape[1]):
         x = i + HALF_OF_PATCH_SIZE
         y = j + HALF_OF_PATCH_SIZE
