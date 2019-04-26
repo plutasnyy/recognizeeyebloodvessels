@@ -13,16 +13,19 @@ from utils import PATCH_SIZE
 class Model:
     def __init__(self):
         self.model = self._build_model()
+        filepath = 'best.hdf5'
+        self.tb_call_back = keras.callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True,
+                                                        write_images=True)
+        self.checkpoint = ModelCheckpoint(filepath, save_weights_only=False, monitor='val_acc', verbose=0,
+                                          save_best_only=True, mode='max')
 
     def load_weights(self, filename):
         logging.info('Load weights: {}'.format(filename))
         self.model.load_weights(filename)
 
     def fit(self, X, y):
-        filepath = 'weights/weights-{epoch:02d}-{val_acc:.2f}.hdf5'
-        checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
-        callbacks_list = [checkpoint]
-        self.model.fit(X, y, validation_split=0.1, epochs=5, batch_size=32, callbacks=callbacks_list, verbose=1)
+        self.model.fit(X, y, validation_split=0.1, epochs=2, batch_size=64,
+                       callbacks=[self.tb_call_back, self.checkpoint], verbose=0)
 
     def compile(self):
         adam = keras.optimizers.Adam(lr=1e-5, epsilon=None, decay=0.0, amsgrad=False)

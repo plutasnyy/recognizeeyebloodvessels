@@ -1,3 +1,5 @@
+import logging
+
 from PIL import Image, ImageOps
 from skimage.util import view_as_windows
 
