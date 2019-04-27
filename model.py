@@ -25,7 +25,7 @@ class Model:
 
     def fit(self, X, y):
         self.model.fit(X, y, validation_split=0.33, epochs=15, batch_size=32,
-                       callbacks=[self.tb_call_back, self.checkpoint], verbose=0)
+                       callbacks=[self.tb_call_back, self.checkpoint], verbose=1)
 
     def compile(self):
         adam = keras.optimizers.Adam(lr=1e-5, epsilon=None, decay=0.0, amsgrad=False)
@@ -43,7 +43,7 @@ class Model:
             input = input.reshape(1, PATCH_SIZE, PATCH_SIZE, 1)
             logging.debug('Reshaped before prediction')
         result = self.model.predict(input)
-        logging.info('Predicted: {}, return {}'.format(result, np.argmax(result)))
+        logging.debug('Predicted: {}, return {}'.format(result, np.argmax(result)))
         logging.debug('For: {}'.format(input))
         return result
 

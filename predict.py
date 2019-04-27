@@ -9,15 +9,18 @@ import numpy as np
 
 from utils import PATCH_SIZE, HALF_OF_PATCH_SIZE
 
-img = Image.open('images/185.jpg')
+logging.basicConfig(level=logging.INFO)
+img = Image.open('test/007.jpg')
+
 img_with_border = correct_image(np.array(ImageOps.expand(img, border=PATCH_SIZE, fill='black')))
 
 model = Model()
-model.load_weights('weights/weights-improvement-49-0.90.hdf5')
+model.load_weights('best.hdf5')
 model.compile()
 
 patches_list = view_as_windows(img_with_border, (PATCH_SIZE, PATCH_SIZE))
 predicted_img = np.zeros_like(img_with_border)
+logging.info('Created patches')
 
 for i in range(patches_list.shape[0]):
     logging.info('i: {}'.format(i))
@@ -28,4 +31,4 @@ for i in range(patches_list.shape[0]):
         predicted_img[x][y] = predicted_value
 
 img_without_border = ImageOps.crop(Image.fromarray(predicted_img), PATCH_SIZE)
-draw_images([img_without_border])
+draw_images([predicted_img])
