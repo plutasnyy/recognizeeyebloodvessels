@@ -6,6 +6,7 @@ from keras.callbacks import ModelCheckpoint
 from keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
 
 import numpy as np
+from keras.optimizers import SGD
 
 from utils import PATCH_SIZE
 
@@ -28,8 +29,9 @@ class Model:
                        callbacks=[self.tb_call_back, self.checkpoint], verbose=1)
 
     def compile(self):
-        adam = keras.optimizers.Adam(lr=1e-5, epsilon=None, decay=0.0, amsgrad=False)
-        self.model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
+        # adam = keras.optimizers.Adam(lr=1e-5, epsilon=None, decay=0.0, amsgrad=False)
+        sgd = SGD(lr=0.01, decay=1e-6, momentum=0.3, nesterov=False)
+        self.model.compile(optimizer=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
         logging.info('Compiled keras model')
 
     def evaluate(self, X, y):
@@ -53,9 +55,20 @@ class Model:
         model.add(Conv2D(32, kernel_size=(3, 3),
                          activation='relu',
                          input_shape=(PATCH_SIZE, PATCH_SIZE, 1)))
+        model.add(Dropout(0.2))
+        model.add(Conv2D(32, (3, 3), activation='relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2)))
+
+        model.add(Conv2D(64, (3, 3), activation='relu'))
+        model.add(Dropout(0.2))
         model.add(Conv2D(64, (3, 3), activation='relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
-        model.add(Dropout(0.25))
+
+        model.add(Conv2D(128, (3, 3), activation='relu'))
+        model.add(Dropout(0.2))
+        model.add(Conv2D(128, (3, 3), activation='relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2)))
+
         model.add(Flatten())
         model.add(Dense(128, activation='relu'))
         model.add(Dropout(0.5))
