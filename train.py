@@ -10,17 +10,18 @@ from time import gmtime, strftime
 
 import numpy as np
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 # TODO add type hints and docs for functions
 
 model = Model()
-model.load_weights('best.hdf5')
+# model.load_weights('best.hdf5')
 model.compile()
 
 for tensor in create_tensor_from_file():
     X, y = create_samples_from_tensor(tensor)
 
     logging.info('Patches were created')
+    print(len(X),len(y))
     logging.info('Original dataset shape {}'.format(Counter(y)))
     X, y = random_undersampling(X, y)
 
@@ -39,3 +40,4 @@ for tensor in create_tensor_from_file():
 
         model.fit(X_subset, y_subset)
         break
+    break

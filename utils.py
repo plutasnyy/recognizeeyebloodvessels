@@ -4,7 +4,7 @@ import logging
 from PIL import Image
 from tensor import Tensor
 
-PATCH_SIZE = 32
+PATCH_SIZE = 48
 HALF_OF_PATCH_SIZE = int(PATCH_SIZE / 2)
 SPLIT_PATCHES_SIZE = 10000
 LONG_EDGE_SIZE = 700

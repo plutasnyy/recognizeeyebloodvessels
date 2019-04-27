@@ -3,7 +3,7 @@ import logging
 import keras
 from keras import Sequential
 from keras.callbacks import ModelCheckpoint
-from keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense
+from keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, Dense, BatchNormalization, Activation
 
 import numpy as np
 from keras.optimizers import SGD
@@ -14,7 +14,7 @@ from utils import PATCH_SIZE
 class Model:
     def __init__(self):
         self.model = self._build_model()
-        filepath = 'best.hdf5'
+        filepath = 'new_best.hdf5'
         self.tb_call_back = keras.callbacks.TensorBoard(log_dir='./Graph', histogram_freq=0, write_graph=True,
                                                         write_images=True)
         self.checkpoint = ModelCheckpoint(filepath, save_weights_only=False, monitor='val_acc', verbose=0,
@@ -55,23 +55,26 @@ class Model:
         model.add(Conv2D(32, kernel_size=(3, 3),
                          activation='relu',
                          input_shape=(PATCH_SIZE, PATCH_SIZE, 1)))
-        model.add(Dropout(0.2))
+        model.add(BatchNormalization())
+        model.add(Activation("relu"))
         model.add(Conv2D(32, (3, 3), activation='relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
 
         model.add(Conv2D(64, (3, 3), activation='relu'))
-        model.add(Dropout(0.2))
+        model.add(BatchNormalization())
+        model.add(Activation("relu"))
         model.add(Conv2D(64, (3, 3), activation='relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
 
         model.add(Conv2D(128, (3, 3), activation='relu'))
-        model.add(Dropout(0.2))
+        model.add(BatchNormalization())
+        model.add(Activation("relu"))
         model.add(Conv2D(128, (3, 3), activation='relu'))
-        model.add(MaxPooling2D(pool_size=(2, 2)))
 
         model.add(Flatten())
+        model.add(Dense(256, activation='relu'))
+        model.add(Dropout(0.2))
         model.add(Dense(128, activation='relu'))
-        model.add(Dropout(0.5))
         model.add(Dense(2, activation='softmax'))
 
         logging.info('Created keras model')
