@@ -3,6 +3,8 @@ import logging
 from numpy import asarray
 from skimage import transform
 
+from utils import LONG_EDGE_SIZE
+
 
 class Tensor:
     def __init__(self, base_image, vessels, mask, id):
@@ -20,7 +22,7 @@ class Tensor:
         self.mask = (asarray(mask) / 255).astype(int)  # 0-1
         self.id = id
 
-        self.resize_tensor(700)
+        self.resize_tensor(LONG_EDGE_SIZE)
 
     def draw_tensor(self):
         """
