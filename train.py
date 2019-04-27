@@ -10,8 +10,22 @@ from time import gmtime, strftime
 
 import numpy as np
 
+import os
+
+import tensorflow as tf
+
+from tensorflow.python.client import device_lib
+from keras import backend as K
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 logging.basicConfig(level=logging.DEBUG)
-# TODO add type hints and docs for functions
+print(device_lib.list_local_devices())
+print(tf.test.is_gpu_available())
+print(K.tensorflow_backend._get_available_gpus())
+# config = tf.ConfigProto( device_count = {'GPU': 1 , 'CPU': 56} )
+# sess = tf.Session(config=config)
+# keras.backend.set_session(sess)
+# # TODO add type hints and docs for functions
 
 model = Model()
 # model.load_weights('best.hdf5')

@@ -25,7 +25,7 @@ class Model:
         self.model.load_weights(filename)
 
     def fit(self, X, y):
-        self.model.fit(X, y, validation_split=0.33, epochs=15, batch_size=32,
+        self.model.fit(X, y, validation_split=0.33, epochs=80, batch_size=32,
                        callbacks=[self.tb_call_back, self.checkpoint], verbose=1)
 
     def compile(self):
