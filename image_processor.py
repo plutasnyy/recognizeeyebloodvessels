@@ -26,7 +26,7 @@ def draw_grey_image(image):
 
 def correct_image(image):
     #TODO run this function only when process tensor, not during creating an object
-    logging.info('Correct an image with shape: {}'.format(image.shape))
+    # logging.info('Correct an image with size: {}'.format(image.shape))
     bw_image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     image_adapt = exposure.equalize_adapthist(bw_image)
     logarithmic_corrected = exposure.adjust_log(image_adapt, 1)

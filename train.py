@@ -1,17 +1,15 @@
 import logging
+from collections import Counter
+from time import strftime, gmtime
 
 from keras.utils import to_categorical
 
 from model import Model
 from sampling import create_samples_from_tensor, random_undersampling
-from utils import create_tensor_from_file, PATCH_SIZE, SPLIT_PATCHES_SIZE
-from collections import Counter
-from time import gmtime, strftime
-
-import numpy as np
+from utils import create_tensor_from_file, SPLIT_PATCHES_SIZE, PATCH_SIZE
 
 import os
-
+import numpy as np
 import tensorflow as tf
 
 from tensorflow.python.client import device_lib
@@ -19,9 +17,6 @@ from keras import backend as K
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 logging.basicConfig(level=logging.DEBUG)
-print(device_lib.list_local_devices())
-print(tf.test.is_gpu_available())
-print(K.tensorflow_backend._get_available_gpus())
 # config = tf.ConfigProto( device_count = {'GPU': 1 , 'CPU': 56} )
 # sess = tf.Session(config=config)
 # keras.backend.set_session(sess)
@@ -32,6 +27,7 @@ model = Model()
 model.compile()
 
 for tensor in create_tensor_from_file():
+    tensor.draw_tensor()
     X, y = create_samples_from_tensor(tensor)
 
     logging.info('Patches were created')

@@ -2,10 +2,8 @@ import logging
 
 from PIL import Image
 from numpy import asarray
-from skimage import transform
 
 import numpy as np
-
 
 class Tensor:
     def __init__(self, base_image, vessels, mask, id):
@@ -23,8 +21,7 @@ class Tensor:
 
         self.base_image = asarray(base_image.resize((w, h), resample=Image.NEAREST))  # 0-255
         from image_processor import correct_image
-        self.corrected = (correct_image(
-            self.base_image) / 255).astype(int)  # 0-1 TODO VERY BAD DEPENDENCY it should be moved out from this class
+        self.corrected = correct_image(self.base_image)  # 0-1 TODO VERY BAD DEPENDENCY it should be moved out from this class
         self.vessels = (asarray(vessels.resize((w, h), resample=Image.NEAREST)) / 255).astype(
             int)  # 0-1
 
