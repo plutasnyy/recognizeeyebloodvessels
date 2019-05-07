@@ -1,0 +1,60 @@
+GREEDY
+
+Image number: 41
+Prediction type: Greedy
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[7155306  388793]
+ [ 605114   36131]]
+Accuracy: 0.8786, Precision: 0.0850, Sensitivity: 0.0563, Specificity: 0.9485, Average precision-recall: 0.0787, ROC-AUC: 0.5024
+
+Image number: 42
+Prediction type: Greedy
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[6458899 1085200]
+ [ 529009  112236]]
+Accuracy: 0.8028, Precision: 0.0937, Sensitivity: 0.1750, Specificity: 0.8562, Average precision-recall: 0.0810, ROC-AUC: 0.5156
+
+Image number: 43
+Prediction type: Greedy
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[7144918  399181]
+ [ 589799   51446]]
+Accuracy: 0.8792, Precision: 0.1142, Sensitivity: 0.0802, Specificity: 0.9471, Average precision-recall: 0.0812, ROC-AUC: 0.5137
+
+Image number: 44
+Prediction type: Greedy
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[7308142  235957]
+ [ 613891   27354]]
+Accuracy: 0.8962, Precision: 0.1039, Sensitivity: 0.0427, Specificity: 0.9687, Average precision-recall: 0.0794, ROC-AUC: 0.5057
+
+Image number: 45
+Prediction type: Greedy
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[7409787  134312]
+ [ 558298   82947]]
+Accuracy: 0.9154, Precision: 0.3818, Sensitivity: 0.1294, Specificity: 0.9822, Average precision-recall: 0.1176, ROC-AUC: 0.5558
+
+NEURAL NETWORK
+
+Image number: 41
+Prediction type: NN
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[6593057  951042]
+ [ 546872   94373]]
+Accuracy: 0.8170, Precision: 0.0903, Sensitivity: 0.1472, Specificity: 0.8739, Average precision-recall: 0.0801, ROC-AUC: 0.5106
+
+Image number: 42
+Prediction type: NN
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[6446795 1097304]
+ [ 527521  113724]]
+Accuracy: 0.8015, Precision: 0.0939, Sensitivity: 0.1773, Specificity: 0.8545, Average precision-recall: 0.0811, ROC-AUC: 0.5159
+
+Image number: 43
+Prediction type: NN
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[6356079 1188020]
+ [ 505706  135539]]
+Accuracy: 0.7931, Precision: 0.1024, Sensitivity: 0.2114, Specificity: 0.8425, Average precision-recall: 0.0834, ROC-AUC: 0.5269
+
