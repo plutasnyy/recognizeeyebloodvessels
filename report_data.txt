@@ -58,3 +58,16 @@ Confusion matrix [[TN,FP],[FN,TP]]:
  [ 505706  135539]]
 Accuracy: 0.7931, Precision: 0.1024, Sensitivity: 0.2114, Specificity: 0.8425, Average precision-recall: 0.0834, ROC-AUC: 0.5269
 
+Image number: 44
+Prediction type: NN
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[7148821  437335]
+ [  64007  535181]]
+Accuracy: 0.9388, Precision: 0.5503, Sensitivity: 0.8932, Specificity: 0.9424, Average precision-recall: 0.4993, ROC-AUC: 0.9178
+
+Image number: 45
+Prediction type: NN
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[6678591  907565]
+ [ 507150   92038]]
+Accuracy: 0.8272, Precision: 0.0921, Sensitivity: 0.1536, Specificity: 0.8804, Average precision-recall: 0.0761, ROC-AUC: 0.5170
