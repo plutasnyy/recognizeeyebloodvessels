@@ -71,3 +71,14 @@ Confusion matrix [[TN,FP],[FN,TP]]:
 [[6678591  907565]
  [ 507150   92038]]
 Accuracy: 0.8272, Precision: 0.0921, Sensitivity: 0.1536, Specificity: 0.8804, Average precision-recall: 0.0761, ROC-AUC: 0.5170
+
+
+
+!!!AVERAGE DATA!!!
+
+NEURAL NETWORK
+Prediction type: NN
+Confusion matrix [[TN,FP],[FN,TP]]:
+[[33209399  4511096]
+ [ 2165200  1041025]]
+Accuracy: 0.8369, Precision: 0.1875, Sensitivity: 0.3247, Specificity: 0.8804, Average precision-recall: 0.5673, ROC-AUC: 0.9417
