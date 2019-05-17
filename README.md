@@ -6,17 +6,17 @@ I got 92% accuracy on the balanced dataset. For a better experience, I recommend
 Main image:
 ![mainImage](data/image/44.jpg "Main Image")
 Manual prediction:
-![manualImage](data/manual/44.tif "Manual Prediction")
+![manualImage](data/manual/44.jpg "Manual Prediction")
 Neural network prediction:
 ![nnImage](data/predicted_nn/44.jpg "NN Prediction")
 
 ### How it works
 Read a manual prediction, a mask, the main image and improve it by using histogram equalization and logarithmic adaptation.
 I keep this data in Tensor class:
-![tensor](data/tensor.png)
+![tensor](data/tensor.png "Tesnor")
 
 Cut patches from the improved image and apply random undersampling. Collect 2500 patches from every image. 
 Example patches:
-![patches](data/patches.png)
+![patches](data/patches.png "Patches")
 
 Learn the neural network using the collected data ;)
