@@ -20,3 +20,4 @@ Example patches:
 ![patches](data/patches.png "Patches")
 
 Learn the neural network using the collected data ;)
+![model](data/nn.png "NN model")
